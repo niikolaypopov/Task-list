@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif !important; 
+        }
+        .title {
+            color:dodgerblue;
+          
+        }
+        
+        .done {
+            text-decoration:line-through;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .btn {
+            
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+           
+            }
+        .add {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #app {
+           margin:0 auto;
+           border: solid 1px;
+           border-radius:20px;
+           width:50%;
+           border-color:darkgray;
+           background:white;
+            
+        }
+        .alldone {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 50%;
+            margin-bottom: 5px;
+        }
+        .form {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            display:block;
+            text-align:center;            
+        }
+        .span {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #newTodo {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+    <main id="app">
+        <h3 class="title">{{title}}</h3>
+   
+    <form @submit.prevent="addTodo" class="form2">
+            <!--<label for="newTodo">New Task</label>-->
+            <input v-model="newTodo" type="text" name="newTodo" id="newTodo">
+            <button class="add" type="submit" name="button"><i class="fa fa-plus"></i> Add New</button>
+    </form> 
+    <ul> 
+        <li v-for="todo in todos">
+            <input class="checkbox" type="checkbox" v-model="todo.done">
+            <span class="span" :class="{done: todo.done}">{{todo.title}}</span>
+            <button @click="removeTodo(todo)"  class="btn" type="button" name="button"><i class="fa fa-trash"></i></button>
+        </li>
+    </ul>
+    <button @click="allDone" class="alldone" type="button" name="button">All Done</button>
+    </main>
+    </div>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="app.js" charset="utf-8"></script>
+</body>
+</html>
